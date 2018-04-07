@@ -1,0 +1,11 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}	
+<h1>New Catalog</h1>
+<form action="{{ url_for('newCatalog')}}" method = 'post'>
+	<p>Name:</p>
+	<input type='text' size='30' name='name' placeholder='create new catalog'>
+	<input type='submit' value='Create'>
+	<a href ="{{url_for('showCatalog')}}">Cancel</a>
+</form>
+{% endblock %}

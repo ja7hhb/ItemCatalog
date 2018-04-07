@@ -1,0 +1,62 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 1px 1em 1px 8em;
+  font-size: 30px;
+  line-height: 1.6;
+  color: black;
+  text-align: center;
+  background-image: url("img/texture-1362879_1920.jpg");
+}
+
+.toc {
+  font-size:16px;
+  position: fixed;
+  left: 0;
+  top: 10em;
+  padding: 1em;
+  width: 14em;
+  line-height: 2;
+  
+  li.visible>a {
+    color: #111;
+    transform: translate( 5px );
+  }
+}
+
+.toc-marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  
+  path {
+    transition: all 0.3s ease;
+  }
+}
+
+a:hover {
+  color: #582323;
+}
+
+a:active {
+  color: #130c0c;
+}
+
+a {
+  color: #351c1c;
+}
+ 
+/*
+
+@media screen and (max-width: 1200px) {
+
+  body {
+    font-size: 14px;
+  }
+  
+}

@@ -1,0 +1,19 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<h1>New Item</h1>
+<div class = 'pane'>
+	<form action="{{url_for('newItem',catalog_id = catalog_id)}}" method = 'post'>
+		<dl>
+			<dt>Name:</dt>
+			<input type='text' size='30' name='name' placeholder='name'>
+			<dt>Description:</dt>
+			<input type='text' size='30' name='description' placeholder="description">
+			<dt>Published year:</dt>
+			<input type='text' size="20" name='year' placeholder="published year">
+		</dl>
+		<input type='submit' value='Create'>
+	</form>
+</div>
+<a href ="{{url_for('showItem',catalog_id=catalog_id)}}">Cancel</a>
+{% endblock %}

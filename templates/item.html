@@ -1,0 +1,59 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+	<div class=message>{{message}}</div>
+	{% endfor %}
+{% endif %}
+{% endwith %}
+<div>{{catalog.name}}</div>
+
+
+<nav class="toc">
+		<ul>
+				{% for i in items %}
+					<li>
+    	<a href='#{{i.name}}'>{{i.name}}</a>
+    	</li>
+    	{% endfor %}
+			</ul>
+
+  <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round" transform="translate(-0.5, -0.5)" />
+  </svg>
+</nav>
+
+<article class="content">
+  {% for i in items %}
+<div id = '{{i.name}}'><h2>{{i.name}}</h2></div>
+<div>{{i.description}}</div>
+<div>{{i.year}}</div>
+
+{%if 'username' in session %} 
+		<div class = 'button'>
+			<a href="{{url_for('editItem',catalog_id=catalog_id,item_id=i.id)}}" >Edit</a>
+			<a href="{{url_for('deleteItem',catalog_id=catalog_id,item_id=i.id)}}" >Delete</a>
+		</div>
+		{% endif %}
+		{% endfor %}
+	</div>
+</div>
+{%if 'username'  in session %}
+<div class='footer'>
+<div class= 'button flex'>
+	<a href = '{{url_for('newItem',catalog_id = catalog_id)}}'>Create New Item</a>
+</div>
+<div class = 'button flex'>
+	<a href="{{url_for('deleteCatalog',catalog_id=catalog_id)}}" >Delete {{ catalog.name }}</a>
+	</div>
+{% endif %}
+<div class="button flex"><a href ="{{url_for('showCatalog')}}">Back home</a></div>
+</div>
+</article>
+
+
+<script type=text/javascript src="{{
+  url_for('static', filename='navVar.js') }}"></script>
+{% endblock %}
