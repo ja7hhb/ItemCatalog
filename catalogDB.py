@@ -33,31 +33,31 @@ session.add(catalog1)
 session.commit()
 
 Item1 = Item(user_id=1, name="Thus Spoke Zarathustra", description="One of the most famous philosophical book of the last 150 years was published in 1892. Even the most unfamiliar with philosophy have it in their library, or have at least heard about Thus Spoke Zarathustra. Nietzsche described it as his deepest philosophical work, the most representative reflection of his thinking and vision, referring to the issue of the death of God and Übermensch‘s appearance.",
-                     year="published in 1892", catalog=catalog1)
+                     year="1892", catalog=catalog1)
 
 session.add(Item1)
 session.commit()
 
 
 Item2 = Item(user_id=1, name="On the Genealogy of Morality", description="Arguably the most systematic and coherent of Nietzsche’s works, On the Genealogy of Morality deals with – and, actually, confronts – the value system of the West, as a system that captures man’s freedom, weakens his existence and undermines knowledge through religion, ethics and philosophy. The German philosopher suggests the rejection of this ‘slave morality’ and supports the Übermensch, who will overcome all these obstacles to reach freedom and knowledge.",
-                     year="published in 1887", catalog=catalog1)
+                     year="1887", catalog=catalog1)
 session.add(Item2)
 session.commit()
 
 Item3 = Item(user_id=1, name="The Antichrist", description="“Christianity remains to this day the greatest misfortune of humanity.” This sentence sums up the basic idea and the sarcastic tone of The Antichrist, so if you’re pissed off by reading just that, don’t go for the rest. Even though Nietzsche had a religious upbringing, this book is a criticism of the new ideas of Christianity that, according to the philosopher, destroyed the ancient world, the only real civilization. He does not put the blame on Christ, he stands for him, but does not hesitate to criticize his representatives and the destructive religious status quo.",
-                     year="published in 1888", catalog=catalog1)
+                     year="1888", catalog=catalog1)
 
 session.add(Item3)
 session.commit()
 
 Item4 = Item(user_id=1, name="The Birth of Tragedy", description="The first work Nietzsche published describes the tragic feeling of life, as a typical philosophical aspect of modernity. According to the German existentialist, this feeling is mainly expressed through music, therefore tragedy played a dominant role within the framework of the aesthetic conceptions through the consecutive eras.",
-                     year="published in 1872", catalog=catalog1)
+                     year="1872", catalog=catalog1)
 
 session.add(Item4)
 session.commit()
 
 Item5 = Item(user_id=1, name="Ecce Homo", description="Nietzsche autobiography was composed just weeks before the writer collapsed into madness. Here were are given an examination of the philosopher himself, as Nietzsche traces his life, work examines his influences and his eventually toppling of them with stunning revelations.",
-                     year="published in 1883", catalog=catalog1)
+                     year="1883", catalog=catalog1)
 
 session.add(Item5)
 session.commit()
@@ -71,14 +71,14 @@ session.commit()
 
 
 Item1 = Item(user_id=1, name="Fear and Trembling", description="In Fear and Trembling, Kierkegaard wanted to understand the anxiety that must have been present in Abraham when God commanded him to offer his son as a human sacrifice. Abraham had a choice to complete the task or to forget it. He resigned himself to the loss of his son, acting according to his faith. In other words, one must be willing to give up all his or her earthly possessions in infinite resignation and must also be willing to give up whatever it is that he or she loves more than God. Abraham had passed the test -- his love for God proved greater than anything else in him. And because a good and just Creator would not want a father to kill his son, God intervened at the last moment to prevent the sacrifice.",
-                     year="published in 1843", catalog=catalog2)
+                     year="1843", catalog=catalog2)
 
 session.add(Item1)
 session.commit()
 
 Item2 = Item(user_id=1, name="The Sickness Unto Death",
                      description=" A famous duck dish from Beijing that has been prepared since the imperial era. The meat is prized for its thin, crisp skin, with authentic versions of the dish serving mostly the skin and little meat, sliced in front of the diners by the cook",
-                     year="published in 1849", catalog=catalog2)
+                     year="1849", catalog=catalog2)
 
 session.add(Item2)
 session.commit()
@@ -92,36 +92,36 @@ session.commit()
 
 
 Item1 = Item(user_id=1, name="The Brothers Karamazov ", description="The Brothers Karamazov is one of the passionate and best fyodor dostoevsky books in order philosophical novel set in the 19th century Russia. During the time, Russia was deeply in the ethical debates of God, morality and free will. The Brothers Karamazov is the spiritual drama of moral struggles that are mainly concerned with the faith, reason, and doubt that sets against the modernizing Russia. When brutal landowner Fyodor Karamazov was murdered, lives of his sons become so much changed into the irrevocably",
-                     year="published in 1880", catalog=catalog3)
+                     year="1880", catalog=catalog3)
 session.add(Item1)
 session.commit()
 
 Item2 = Item(user_id=1, name="Crime and Punishment", description="Raskolnikov is a talented student and poverty strikes him with devising the theory about the extraordinary men who are seen above the law. With brilliance and innovation, he makes the new suggestion that contributes the society. Raskolnikov sets out to prove the theory with murdering the cynical, vile and old pawnbroker with her sister.",
-                     year="published in 1866", catalog=catalog3)
+                     year="1866", catalog=catalog3)
 session.add(Item2)
 session.commit()
 
 Item3 = Item(user_id=1, name="The Idiot", description="After returning to Russia from the sanitarium in Switzerland, Christ-like epileptic Prince Myshkin also finds himself most enmeshed in the tangle of love that has torn the two women. Nastasya and Aglaia is the notorious woman both involved with the money hungry and corrupt Ganya. Honesty, goodness, and integrity of Myshkin shown with the unequal attributes bring more emptiness around him. Anna Brailovsky corrected inaccuracies that are wrought by the drastic anglicization of the novel by Garnett.",
-                     year="published in 1869", catalog=catalog3)
+                     year="1869", catalog=catalog3)
 
 session.add(Item3)
 session.commit()
 
 Item4 = Item(user_id=1, name="Notes from Underground", description="This is a collection of powerful stories by great masters of Russian literature, Fyodor Dostoyevsky. The author illustrates thoughts on political philosophy, humanity, and religion. Notes from Underground, White Nights, The Dream of a Ridiculous Man, and Selections from The House of the Dead compels the works presented with greater volume that is written at the distinct periods of Dostoyevsky's life. Thomas Mann has described the famous Dostoyevsky as the author whose Christian sympathy is quite ordinarily devoted to solving the problems based on human misery, sin, depths of lust as well as crime.",
-                     year="published in 1864", catalog=catalog3)
+                     year="1864", catalog=catalog3)
 
 session.add(Item4)
 session.commit()
 
 
 Item5 = Item(user_id=1, name="Demons", description='Demons by Fyodor Dostoevsky were inspired by the true story of political murder in Russians in 1869. Fyodor Dostoevsky has conceived of the demons as the "novel-pamphlet" and everything has been plagued with the ideology of materialists. Fyodor Dostoevsky saw something that infects the native land and emerged as the most prophetic as well as ferociously funny masterpiece. Pyotr and Stavrogin were considered as the leaders of Russian revolutionary cell.',
-                     year="published in 1872", catalog=catalog3)
+                     year="1872", catalog=catalog3)
 
 session.add(Item5)
 session.commit()
 
 Item6 = Item(user_id=1, name="The House of the Dead", description="The House of the Dead is the fiction story that is based on 4 years of life in a Siberian prison. An educated upper-class man was condemned to live with the brutal guards and criminals with the arbitrary punishments, disgusting living conditions, lousy food and much more. He avoids recrimination and bitterness along with the faith in the human survival.",
-                     year="published in 1862", catalog=catalog3)
+                     year="1862", catalog=catalog3)
 
 session.add(Item6)
 session.commit()
@@ -134,13 +134,13 @@ session.commit()
 
 
 Item1 = Item(user_id=1, name="Being and Nothingness", description='A philosophical classic and major cornerstone of modern existentialism. Often criticized and all-too-rarely understood, the philosophy of Jean-Paul Sartre encompasses the dilemmas and aspirations of the individual in contemporary society.Being and Nothingnesscontains all the basic tenets of his thought, as well as all its more intricate details. A work of inherent force and epic scope, it provides a vivid analysis for all who would understand one of the most influential philosophic movements of any age, and makes clear whyThe New York Timeshailed Sartre’s masterpiece as "a philosophy to be reckoned with, both for its own intrinsic power and as a profound symptom of our time."',
-                     year="published in 1943", catalog=catalog4)
+                     year="1943", catalog=catalog4)
 
 session.add(Item1)
 session.commit()
 
 Item2 = Item(user_id=1, name="Nausea", description='''Nausea is the story of Antoine Roquentin, a French writer who is horrified at his own existence. In impressionistic, diary form he ruthlessly catalogues his every feeling and sensation about the world and people around him. His thoughts culminate in a pervasive, overpowering feeling of nausea which "spread at the bottom of the viscous puddle, at the bottom of our time, the time of purple suspenders and broken chair seats; it is made of wide, soft instants, spreading at the edge, like an oil stain." Roquentin's efforts to come to terms with his life, his philosophical and psychological struggles, give Sartre the opportunity to dramatize the tenets of his Existentialist creed. The introduction for this edition of Nausea by Hayden Carruth gives background on Sartre's life and major works, a summary of the principal themes of Existentialist philosophy, and a critical analysis of the novel itself.''',
-                     year="published in 1938", catalog=catalog4)
+                     year="1938", catalog=catalog4)
 
 session.add(Item2)
 session.commit()
@@ -154,18 +154,18 @@ session.commit()
 
 
 Item1 = Item(user_id=1, name="Critique of Pure Reason", description="The Critique of Pure Reason, published by Immanuel Kant in 1781, is one of the most complex structures and the most significant of modern philosophy, bringing a revolution at least as great as that of Descartes and his Discourse on Method. The complexity of the first review (the second is the critique of practical reason, and the third is a critique of the faculty of judging), is such that Kant himself published an introductory text, entitled Prolegomena to Any Future Metaphysics. The aim of this book is summed up quite easily, however: metaphysics is a battle that needs to be ordered. Kant proposes to everyone agreed, giving a new status to reason and new contours to the understanding. In summary, the critique of pure reason tries to define credible to the question: How do I know? To this question Kant answers, I can think of the objects of metaphysics (God, I, the world), but not knowing in the sense that I know the laws of physics.",
-                     year="published in 1781", catalog=catalog5)
+                     year="1781", catalog=catalog5)
 session.add(Item1)
 session.commit()
 
 Item2 = Item(user_id=1, name="Critique of Practical Reason", description="Critique of Practical Reason, written by legendary author Immanuel Kant is widely considered to be one of the greatest classic and historical texts of all time. This great classic will surely attract a whole new generation of readers. For many, Critique of Practical Reason is required reading for various courses and curriculums. And for others who simply enjoy reading timeless pieces of classic literature, this gem by Immanuel Kant is highly recommended. Published by Classic Books International and beautifully produced, Critique of Practical Reason would make an ideal gift and it should be a part of everyone's personal library.",
-                     year="published in 1788", catalog=catalog5)
+                     year="1788", catalog=catalog5)
 
 session.add(Item2)
 session.commit()
 
 Item3 = Item(user_id=1, name="Critique of Judgment", description="In THE CRITIQUE OF JUDGMENT (1790), Immanuel Kant (1724-1804) seeks to establish the a priori principles underlying the faculty of judgment, just as he did in his previous critiques of pure and practical reason. The first part deals with the subject of our aesthetic sensibility; we respond to certain natural phenomena as beautiful, says Kant, when we recognize in nature a harmonious order that satisfies the mind's own need for order. The second half of the critique concentrates on the apparent teleology in nature's design of organisms. Kant argues that our minds are inclined to see purpose and order in nature and this is the main principle underlying all of our judgments. Although this might imply a super sensible Designer, Kant insists that we cannot prove a supernatural dimension or the existence of God. Such considerations are beyond reason and are solely the province of faith.",
-                     year="published in 1790", catalog=catalog5)
+                     year="1790", catalog=catalog5)
 
 session.add(Item3)
 session.commit()
@@ -179,13 +179,13 @@ session.commit()
 
 
 Item1 = Item(user_id=1, name="Apology", description="The Apology is one of those rare works that gracefully bridges the divide between philosophy and literature. The work is less concerned with asserting any particular philosophical doctrines than it is with creating a portrait of the ideal philosopher. On trial, with his life at stake, Socrates maintains his cool and unwaveringly defends his way of life as unassailably just. This speech has served as inspiration and justification for philosophical thinkers ever since. It is also valuable in that it links three major themes in Socratic thought: Socratic irony, the elenchus (the Socratic mode of inquiry), and the higher ethical concerns that dominate Socrates' life. The Delphic oracle, which proclaimed that Socrates was the wisest of men because he knows that he knows nothing, can be posited as the source of Socratic irony. This oracle has led Socrates to assume his highly ironic stance of confessing his own ignorance, and yet showing his interlocutors to be even more ignorant than he; great wisdom turns out, contrary to expectation, to reside in a humble acknowledgment of ignorance. With wisdom of this kind, Socrates does not take himself too seriously. Indeed, his wisdom is deeply humbling, as it casts all pretensions to human knowledge into question. With a smile, Socrates accepts that he is better off the less he thinks he knows, and passes this wisdom along with appropriate wit. This irony, then, deeply informs the elenchus, Socrates' preferred mode of inquiry. It is important to note that almost all written accounts of Socrates are dialogues (The Apology is an exception)--Socrates never lectures on his beliefs in a one-sided manner. This supports the idea that Socrates has no knowledge of his own to put forward. His method of inquiry consists of identifying what his interlocutor thinks he knows, and then slowly dissecting those claims of knowledge. The Apology, however, is presented almost exclusively in the form of a monologue, because Socrates is not discussing and dismantling any one particular claim so much as he is laying out the method behind these dismantlings. As such, it is an invaluable commentary on the other dialogues. The elenchus acts to disabuse Socrates' interlocutors of their pretensions and thereby deepens their wisdom. For Socrates, wisdom and virtue are closely connected, so his efforts serve to improve society as a whole. In Socrates' view, if we are all wise, none of us will ever do wrong, and our self-knowledge will lead to healthier, more fulfilling lives. Thus, the philosopher, according to Socrates, does not merely follow abstract intellectual pursuits for the sake of amusement, but is engaged in activities of the highest moral value.",
-                     year="published in 399BC", catalog=catalog6)
+                     year="399BC", catalog=catalog6)
 
 session.add(Item1)
 session.commit()
 
 Item2 = Item(user_id=1, name="Republic", description="Since the mid-nineteenth century, the Republic has been Plato’s most famous and widely read dialogue.  As in most other Platonic dialogues the main character is Socrates.  It is generally accepted that the Republic belongs to the dialogues of Plato’s middle period.  In Plato’s early dialogues, Socrates refutes the accounts of his interlocutors and the discussion ends with no satisfactory answer to the matter investigated.  In the Republic however, we encounter Socrates developing a position on justice and its relation to eudaimonia (happiness).  He provides a long and complicated, but unified argument, in defense of the just life and its necessary connection to the happy life. The dialogue explores two central questions.  The first question is “what is justice?”  Socrates addresses this question both in terms of political communities and in terms of the individual person or soul.  He does this to address the second and driving question of the dialogue: “is the just person happier than the unjust person?” or “what is the relation of justice to happiness?” Given the two central questions of the discussion, Plato’s philosophical concerns in the dialogue are ethical and political.  In order to address these two questions, Socrates and his interlocutors construct a just city in speech, the Kallipolis.  They do this in order to explain what justice is and then they proceed to illustrate justice by analogy in the human soul.  On the way to defending the just life, Socrates considers a tremendous variety of subjects such as several rival theories of justice, competing views of human happiness, education, the nature and importance of philosophy and philosophers, knowledge, the structure of reality, the Forms, the virtues and vices, good and bad souls, good and bad political regimes, the family, the role of women in society, the role of art in society, and even the afterlife.  This wide scope of the dialogue presents various interpretative difficulties and has resulted in thousands of scholarly works.  In order to attempt to understand the dialogue’s argument as a whole one is required to grapple with these subjects.",
-                     year="published in 381BC", catalog=catalog6)
+                     year="381BC", catalog=catalog6)
 
 session.add(Item2)
 session.commit()
