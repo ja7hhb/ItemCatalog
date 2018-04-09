@@ -11,6 +11,14 @@ body {
   background-image: url("img/texture-1362879_1920.jpg");
 }
 
+.loginout {
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 1em;
+  width: 8em;
+}
+
 .toc {
   font-size:16px;
   position: fixed;

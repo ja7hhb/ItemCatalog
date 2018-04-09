@@ -30,7 +30,7 @@ session = DBSession()
 def showLogin():
     state = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(32))
     login_session['state'] = state
-    return render_template('login4.html', STATE=state)
+    return render_template('login.html', STATE=state)
 @app.route('/logout')
 def logout():
    # remove the username from the session if it is there
