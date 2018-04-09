@@ -8,7 +8,7 @@ body {
   line-height: 1.6;
   color: black;
   text-align: center;
-  background-image: url("img/texture-1362879_1920.jpg");
+  background-image: url("/static/img/texture-1362879_1920.jpg");
 }
 
 .loginout {
