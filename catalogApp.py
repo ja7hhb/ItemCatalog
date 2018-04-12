@@ -5,7 +5,8 @@ from flask import make_response, flash, jsonify, session as login_session
 from setupDatabase import Base, Catalog, Item, User
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-import random, string
+import random
+import string
 from oauth2client.client import flow_from_clientsecrets, FlowExchangeError
 import httplib2
 import json
@@ -17,27 +18,33 @@ app.secret_key = 'super_secret_key'
 app.debug = True
 
 # Reads client_secrets.json file to get client_id value for Google Sign in
-CLIENT_ID = json.loads(open('client_secrets.json','r').read())['web']['client_id']
+CLIENT_ID = json.loads(
+    open('client_secrets.json', 'r').read())['web']['client_id']
 
-#Create session and connect to DB
+# Create session and connect to DB
 engine = create_engine('sqlite:///catalog.db')
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
-#Create a state token to prevent request
-#Store it in the session for later validation
+
+# Create a state token to prevent request
+# Store it in the session for later validation
 @app.route('/login')
 def showLogin():
-    state = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(32))
+    state = ''.join(random.choice(
+        string.ascii_uppercase + string.digits) for x in range(32))
     login_session['state'] = state
     return render_template('login.html', STATE=state)
+
+
 @app.route('/logout')
 def logout():
-   # remove the username from the session if it is there
+    # remove the username from the session if it is there
     login_session.pop('state', None)
     return render_template('login.html')
+
 
 # Log in the application using google sign in
 @app.route('/gconnect', methods=['POST'])
@@ -94,8 +101,8 @@ def gconnect():
     stored_access_token = login_session.get('access_token')
     stored_gplus_id = login_session.get('gplus_id')
     if stored_access_token is not None and gplus_id == stored_gplus_id:
-        response = make_response(json.dumps('Current user is already connected.'),
-                                 200)
+        response = make_response(
+            json.dumps('Current user is already connected.'), 200)
         response.headers['Content-Type'] = 'application/json'
         return response
 
@@ -128,23 +135,27 @@ def gconnect():
     output += '!</h1>'
     output += '<img src="'
     output += login_session['picture']
-    output += ' " style = "width: 300px; height: 300px;border-radius: 150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
+    output += ' " style = "width: 300px; height: 300px;border-radius: \
+    150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
     flash("you are now logged in as %s" % login_session['username'])
     print("done!")
     return output
 
+
 # User Helper Functions
 def createUser(login_session):
-    newUser = User(name=login_session['username'],email=login_session[
+    newUser = User(name=login_session['username'], email=login_session[
         'email'], picture=login_session['picture'])
     session.add(newUser)
     session.commit()
     user = session.query(User).filter_by(email=login_session['email']).one()
     return user.id
 
+
 def getUserInfo(user_id):
     user = session.query(User).filter_by(id=user_id).one()
     return user.id
+
 
 def getUserID(email):
     try:
@@ -153,28 +164,33 @@ def getUserID(email):
     except:
         return None
 
+
 # Logout the application using google sign out
 @app.route('/gdisconnect')
 def gdisconnect():
     access_token = login_session.get('access_token')
     if access_token is None:
         print('Access Token is None')
-        response = make_response(json.dumps('Current user not connected.'), 401)
+        response = make_response(
+            json.dumps('Current user not connected.'), 401)
         response.headers['Content-Type'] = 'application/json'
         return response
     print('In gdisconnect access token is %s', access_token)
     print('User name is: ')
     print(login_session['username'])
-    url = 'https://accounts.google.com/o/oauth2/revoke?token=%s' % login_session['access_token']
+    url = 'https://accounts.google.com\
+    /o/oauth2/revoke?token=%s' % login_session['access_token']
     h = httplib2.Http()
-    result = h.request(url,'GET')[0]
+    result = h.request(url, 'GET')[0]
     print('result is ')
     print(result)
 
     if result['status'] != '200':
-        response = make_response(json.dumps('Failed to revoke token for given user.', 400))
+        response = make_response(json.dumps(
+            'Failed to revoke token for given user.', 400))
         response.headers['Content-Type'] = 'application/json'
         return response
+
 
 # # Login the application using facebook sign in
 @app.route('/fbconnect', methods=['POST'])
@@ -183,32 +199,35 @@ def fbconnect():
         response = make_response(json.dumps('Invalid state parameter.'), 401)
         response.headers['Content-Type'] = 'application/json'
         return response
-    access_token = request.data
+    access_token = request.data.decode('utf8')
     print("access token received %s " % access_token)
-
-
     app_id = json.loads(open('fb_client_secrets.json', 'r').read())[
         'web']['app_id']
     app_secret = json.loads(
         open('fb_client_secrets.json', 'r').read())['web']['app_secret']
-    url = 'https://graph.facebook.com/v2.9/access_token?grant_type=fb_exchange_token&client_id=%s&client_secret=%s&fb_exchange_token=%s' % (
+    print("app_id received %s " % app_id)
+    print("app_secret received %s " % app_secret)
+    url = 'https://graph.facebook.com/v2.9/oauth/access_token?grant_type=fb_exchange_token&client_id=%s&client_secret=%s&fb_exchange_token=%s' % (
         app_id, app_secret, access_token)
     h = httplib2.Http()
     result = h.request(url, 'GET')[1].decode('utf-8')
     data = json.loads(result)
 
-    token = result.split(',')[0].split(':')[1].replace('"', '')
+    # Use token to get user info from API
+    userinfo_url = "https://graph.facebook.com/v2.8/me"
+    token = data['access_token']
+    #token = result.split(',')[0].split(':')[1].replace('"', '')
     #token = 'access_token=' + data['access_token']
     # see: https://discussions.udacity.com/t/
     #   issues-with-facebook-oauth-access-token/233840?source_topic_id=174342
 
     # Use token to get user info from API
     # make API call with new token
-    url = 'https://graph.facebook.com/v2.9/me?%s&fields=name,id,email,picture' % token
-
+    url = 'https://graph.facebook.com/v2.8/me?%s&fields=name,id,email,picture' % token
     h = httplib2.Http()
+    #url = 'https://graph.facebook.com/v2.12/me?access_token=' + token + '&fields=name,id,email,picture'
     result = h.request(url, 'GET')[1].decode('utf-8')
-    print("url sent for API access:%s"% url)
+    print("url sent for API access:%s" % url)
     print("API JSON result: %s" % result)
     data = json.loads(result)
 
@@ -217,7 +236,7 @@ def fbconnect():
     login_session['email'] = data['email']
     login_session['facebook_id'] = data['id']
     login_session['picture'] = data['picture']["data"]["url"]
-    login_session['access_token'] = access_token
+    login_session['access_token'] = token
 
     # see if user exists
     user_id = getUserID(login_session['email'])
@@ -232,10 +251,12 @@ def fbconnect():
     output += '!</h1>'
     output += '<img src="'
     output += login_session['picture']
-    output += ' " style = "width: 300px; height: 300px;border-radius: 150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
+    output += ' " style = "width: 300px; height: 300px;border-radius: \
+    150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
 
     flash("Now logged in as %s" % login_session['username'])
     return output
+
 
 # Logout the application using facebook sign out
 @app.route('/fbdisconnect')
@@ -247,6 +268,7 @@ def fbdisconnect():
     h = httplib2.Http()
     result = h.request(url, 'DELETE')[1].decode('utf-8')
     return 'you have been logged out'
+
 
 # Logout depend on provider
 @app.route('/disconnect')
@@ -260,7 +282,7 @@ def disconnect():
             del login_session['email']
             del login_session['picture']
             del login_session['provider']
-        #if login_session['provider'] == 'facebook':
+        # if login_session['provider'] == 'facebook':
         #    fbdisconnect()
         #    del login_session['provider']
         #    del login_session['username']
@@ -268,38 +290,43 @@ def disconnect():
         #    del login_session['facebook_id']
         #    del login_session['picture']
         #    del login_session['access_token']
-        
+
         flash("You have successfully been logged out.")
         return redirect(url_for('showCatalog'))
     else:
         flash("You were not logged in")
         return redirect(url_for('showCatalog'))
 
+
 # JSON APIs to view Information
 @app.route('/catalog/JSON')
 def catalogJSON():
     catalog = session.query(Catalog).all()
-    items=session.query(Item).all()
+    items = session.query(Item).all()
     return jsonify(Item=[i.serialize for i in items])
+
 
 @app.route('/catalog/<int:catalog_id>/item/JSON')
 def catalogItemJSON(catalog_id):
     catalog = session.query(Catalog).filter_by(id=catalog_id).one()
-    items=session.query(Item).filter_by(catalog_id=catalog_id).all()
+    items = session.query(Item).filter_by(catalog_id=catalog_id).all()
     return jsonify(Item=[i.serialize for i in items])
 
-#Add your API Endipoint Here
+
+# Add your API Endipoint Here
 @app.route('/catalog/<int:catalog_id>/item/<int:item_id>/JSON')
 def itemJSON(catalog_id, item_id):
-    item = session.query(Item).filter_by(id = item_id).one()
-    return jsonify(Item = item.serialize)
+    item = session.query(Item).filter_by(id=item_id).one()
+    return jsonify(Item=item.serialize)
+
 
 # Show catalogs
 @app.route('/')
 @app.route('/catalog/')
 def showCatalog():
     catalog = session.query(Catalog).all()
-    return render_template('catalog.html',catalog=catalog)
+    return render_template('catalog.html', catalog=catalog)
+
 
 # Crete new catalog
 @app.route('/catalog/new/', methods=['GET', 'POST'])
@@ -314,7 +341,8 @@ def newCatalog():
         flash("New catalog created!")
         return redirect(url_for('showCatalog'))
     else:
-         return render_template('newCatalog.html')
+        return render_template('newCatalog.html')
+
 
 # Edit catalog
 @app.route('/catalog/<int:catalog_id>/edit/', methods=['GET', 'POST'])
@@ -330,8 +358,9 @@ def editCatalog(catalog_id):
         flash("Catalog has been edited")
         return redirect(url_for('showCatalog'))
     else:
-         return render_template(
-            'editCatalog.html',catalog_id = catalog_id,catalog=catalog)
+        return render_template(
+            'editCatalog.html', catalog_id=catalog_id, catalog=catalog)
+
 
 # Delete catalog
 @app.route('/catalog/<int:catalog_id>/delete/', methods=['GET', 'POST'])
@@ -340,21 +369,27 @@ def deleteCatalog(catalog_id):
     if 'username' not in login_session:
         return redirect('/login')
     if catalog.user_id != login_session['user_id']:
-        return "<script>function my Function() {alert('You are not authorized to delete this catalog. Please create your own catalog in order to delete.');}</script><bodyonload='myFunction()''>"
+        return "<script>function my Function() {alert('You are not \
+        authorized to delete this catalog. Please create your own catalog \
+        in order to delete.');}</script><bodyonload='myFunction()''>"
     if request.method == 'POST':
         session.delete(catalog)
         session.commit()
         flash("Catalog has been deleted")
         return redirect(url_for('showCatalog'))
     else:
-        return render_template('deleteCatalog.html',catalog_id=catalog_id,catalog=catalog)
+        return render_template(
+            'deleteCatalog.html', catalog_id=catalog_id, catalog=catalog)
+
 
 # Show specific item
 @app.route('/catalog/<int:catalog_id>/item/')
 def showItem(catalog_id):
     catalog = session.query(Catalog).filter_by(id=catalog_id).one()
     items = session.query(Item).filter_by(catalog_id=catalog.id)
-    return render_template('item.html', items=items,catalog=catalog, catalog_id=catalog_id)
+    return render_template(
+        'item.html', items=items, catalog=catalog, catalog_id=catalog_id)
+
 
 # Create new item
 @app.route('/catalog/<int:catalog_id>/item/new/', methods=['GET', 'POST'])
@@ -364,17 +399,21 @@ def newItem(catalog_id):
         return redirect('/login')
     if request.method == 'POST':
         newItems = Item(
-            name=request.form['name'],description=request.form['description'],year=request.form['year'], catalog_id=catalog_id)
+            name=request.form['name'], description=request.form['description'],
+            year=request.form['year'], catalog_id=catalog_id)
         session.add(newItems)
         session.commit()
         flash("New item created!")
-        return redirect(url_for('showItem', catalog_id=catalog_id,item=items))
+        return redirect(url_for('showItem', catalog_id=catalog_id, item=items))
     else:
-        return render_template('newItem.html',catalog_id=catalog_id,item=items)
+        return render_template(
+            'newItem.html', catalog_id=catalog_id, item=items)
+
 
 # Edit item
-@app.route('/catalog/<int:catalog_id>/item/<int:item_id>/edit/', methods=['GET', 'POST'])
-def editItem(catalog_id,item_id):
+@app.route('/catalog/<int:catalog_id>/item/<int:item_id>/edit/',
+           methods=['GET', 'POST'])
+def editItem(catalog_id, item_id):
     itemEdit = session.query(Item).filter_by(id=item_id).one()
     if 'username' not in login_session:
         return redirect('/login')
@@ -390,11 +429,14 @@ def editItem(catalog_id,item_id):
         flash("Item has been edited")
         return redirect(url_for('showItem', catalog_id=catalog_id))
     else:
-        return render_template('editItem.html', catalog_id=catalog_id, item_id=item_id, item=itemEdit)
+        return render_template('editItem.html', catalog_id=catalog_id,
+                               item_id=item_id, item=itemEdit)
+
 
 # Delete item
-@app.route('/catalog/<int:catalog_id>/item/<int:item_id>/delete/', methods=['GET', 'POST'])
-def deleteItem(catalog_id,item_id):
+@app.route('/catalog/<int:catalog_id>/item/<int:item_id>/delete/',
+           methods=['GET', 'POST'])
+def deleteItem(catalog_id, item_id):
     itemDelete = session.query(Item).filter_by(id=item_id).one()
     if 'username' not in login_session:
         return redirect('/login')
@@ -404,7 +446,9 @@ def deleteItem(catalog_id,item_id):
         flash("Item has been deleted")
         return redirect(url_for('showItem', catalog_id=catalog_id))
     else:
-        return render_template('deleteItem.html',catalog_id=catalog_id, item_id=item_id,item=itemDelete)
+        return render_template('deleteItem.html', catalog_id=catalog_id,
+                               item_id=item_id, item=itemDelete)
+
 
 if __name__ == '__main__':
-    app.run(host = '0.0.0.0', port = 5000)
+    app.run(host='0.0.0.0', port=5000)
