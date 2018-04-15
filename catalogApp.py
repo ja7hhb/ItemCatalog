@@ -262,10 +262,6 @@ def deleteCatalog(catalog_id):
     catalog = session.query(Catalog).filter_by(id=catalog_id).one()
     if 'username' not in login_session:
         return redirect('/login')
-    if catalog.user_id != login_session['user_id']:
-        return "<script>function my Function() {alert('You are not \
-        authorized to delete this catalog. Please create your own catalog \
-        in order to delete.');}</script><bodyonload='myFunction()''>"
     if request.method == 'POST':
         session.delete(catalog)
         session.commit()
@@ -345,4 +341,4 @@ def deleteItem(catalog_id, item_id):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=2000)
+    app.run(host='0.0.0.0', port=5000)

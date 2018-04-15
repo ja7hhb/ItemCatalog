@@ -38,7 +38,8 @@
 <div class= 'button'>
 	<a href = '{{url_for('newItem',catalog_id = catalog_id)}}'>Create New Item</a>
 </div>
-<div class = 'button flex'>
+<div class = 'button'>
+	<a href="{{url_for('deleteCatalog',catalog_id=catalog_id)}}" >Edit {{ catalog.name }}</a>
 	<a href="{{url_for('deleteCatalog',catalog_id=catalog_id)}}" >Delete {{ catalog.name }}</a>
 </div>
 {% endif %}
