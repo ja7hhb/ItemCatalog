@@ -27,6 +27,6 @@ run catalogApp.py
 
 ## JSON Endpoints
 The following are open to the public:
-Catalog JSON: /catalog/JSON - Displays the whole catalog. 
-Category Items JSON: /catalog/<path:category_name>/items/JSON - Displays items for a specific catalog
-Category Item JSON: /catalog/<int:catalog_id>/item/<int:item_id>/JSON- Displays a specific catalog item.
+Catalog JSON: `/catalog/JSON` - Displays the whole catalog. 
+Category Items JSON: `/catalog/<path:category_name>/items/JSON` - Displays items for a specific catalog
+Category Item JSON: `/catalog/<int:catalog_id>/item/<int:item_id>/JSON`- Displays a specific catalog item.
