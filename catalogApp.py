@@ -39,13 +39,6 @@ def showLogin():
     return render_template('login.html', STATE=state)
 
 
-@app.route('/logout')
-def logout():
-    # remove the username from the session if it is there
-    login_session.pop('state', None)
-    return render_template('login.html')
-
-
 # Log in the application using google sign in
 @app.route('/gconnect', methods=['POST'])
 def gconnect():
