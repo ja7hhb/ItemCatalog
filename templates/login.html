@@ -80,10 +80,7 @@ var access_token = '';
     FB.Event.subscribe('auth.login', function(response) {
         access_token = response.authResponse.accessToken;
     });
-
   };
-
-
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
      if (d.getElementById(id)) {return;}
@@ -111,7 +108,6 @@ FB.login(function(response){
          setTimeout(function() {
           window.location.href = "/catalog";
          }, 4000);
-
       } else {
         $('#result').html('Failed to make a server-side call. Check your configuration and console.');
          }
