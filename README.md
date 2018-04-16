@@ -6,8 +6,7 @@ This is a project for udacity nanodegree program.
 This is RESTful web application about philosophy catalog item using Flask which accesss a SQL database.  To createauthentication system, this project has OAuth2.
 
 
-## Usage 
-requirements
+## requirements
 
 Vagrant 
 Virtual Box
@@ -15,21 +14,16 @@ python3
 flask
 
 ## step
-clone this repo
-
-git clone https://github.com/ja7hhb/ItemCatalog.git
+clone this repo:`git clone https://github.com/ja7hhb/ItemCatalog.git`
 
 cd ItemCatalog
 
-create virtual environment
-vagrant up
+create virtual environment:`vagrant up`&`vagrant ssh`
 
-vagrant ssh
-
-cd /vagrant
+`cd /vagrant`
 
 run catalogApp.py
-
+`python3 catalogApp.py`
 
 ## JSON Endpoints
 The following are open to the public:
