@@ -1,7 +1,7 @@
 # Item Catalog Web App
 URL: https://catalogitem00.herokuapp.com/
 
-This is a project for udacity nanodegree program.
+This is a project for <a href="https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd004"> Udacity Full Stack Web Developer Nanodegree</a>.
 
 This is RESTful web application about philosophy catalog item using Flask which accesss a SQL database.  To createauthentication system, this project has OAuth2.
 
