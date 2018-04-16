@@ -241,9 +241,9 @@ def newCatalog():
 # Edit catalog
 @app.route('/catalog/<string:catalogname>/edit/', methods=['GET', 'POST'])
 def editCatalog(catalogname):
-    catalog = session.query(Catalog).filter_by(catalogname=catalogname).one()
     if 'username' not in login_session:
         return redirect('/login')
+    catalog = session.query(Catalog).filter_by(catalogname=catalogname).one()
     if request.method == 'POST':
         if request.form['name']:
             catalog.catalogname = request.form['name']
@@ -259,9 +259,9 @@ def editCatalog(catalogname):
 # Delete catalog
 @app.route('/catalog/<string:catalogname>/delete/', methods=['GET', 'POST'])
 def deleteCatalog(catalogname):
-    catalog = session.query(Catalog).filter_by(catalogname=catalogname).one()
     if 'username' not in login_session:
         return redirect('/login')
+    catalog = session.query(Catalog).filter_by(catalogname=catalogname).one()
     if request.method == 'POST':
         session.delete(catalog)
         session.commit()
@@ -306,9 +306,9 @@ def newItem(catalogname):
 @app.route('/catalog/<string:catalogname>/item/<string:itemname>/edit/',
            methods=['GET', 'POST'])
 def editItem(catalogname, itemname):
-    itemEdit = session.query(Item).filter_by(itemname=itemname).one()
     if 'username' not in login_session:
         return redirect('/login')
+    itemEdit = session.query(Item).filter_by(itemname=itemname).one()
     if request.method == 'POST':
         if request.form['name']:
             itemEdit.name = request.form['name']
@@ -329,9 +329,9 @@ def editItem(catalogname, itemname):
 @app.route('/catalog/<string:catalogname>/item/<string:itemname>/delete/',
            methods=['GET', 'POST'])
 def deleteItem(catalogname, itemname):
-    itemDelete = session.query(Item).filter_by(itemname=itemname).one()
     if 'username' not in login_session:
         return redirect('/login')
+    itemDelete = session.query(Item).filter_by(itemname=itemname).one()
     if request.method == 'POST':
         session.delete(itemDelete)
         session.commit()
