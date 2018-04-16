@@ -1,5 +1,4 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
-import cgi
 from flask import Flask, render_template, request, redirect, url_for
 from flask import make_response, flash, jsonify, session as login_session
 from setupDatabase import Base, Catalog, Item, User
@@ -285,9 +284,9 @@ def showItem(catalogname):
 # Create new item
 @app.route('/catalog/<string:catalogname>/item/new/', methods=['GET', 'POST'])
 def newItem(catalogname):
-    items = session.query(Item).all()
     if 'username' not in login_session:
         return redirect('/login')
+    items = session.query(Item).all()
     if request.method == 'POST':
         newItems = Item(
             itemname=request.form['name'],
