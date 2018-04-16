@@ -29,7 +29,7 @@ session.commit()
 
 # Item for Fridrich Nietzsche
 catalog1 = Catalog(
-   user_id=1, name="Fridrich Nietzsche", description="Friedrich Nietzsche \
+   user_id=1, catalogname="Fridrich Nietzsche", description="Friedrich Nietzsche \
    (1844–1900) was a German philosopher and \
    cultural critic who published intensively in the 1870s and 1880s. He is \
    famous for uncompromising criticisms of traditional European morality and \
@@ -50,7 +50,7 @@ session.add(catalog1)
 session.commit()
 
 Item1 = Item(
-   user_id=1, name="Thus Spoke Zarathustra", description="One of the most  \
+   user_id=1, itemname="Thus Spoke Zarathustra", description="One of the most  \
    famous philosophical book of the last 150 \
    years was published in 1892. Even the most unfamiliar with philosophy \
    have it in their library, or have at least heard about Thus Spoke \
@@ -65,7 +65,7 @@ session.commit()
 
 
 Item2 = Item(
-   user_id=1, name="On the Genealogy of Morality",
+   user_id=1, itemname="On the Genealogy of Morality",
    description="Arguably the most systematic and coherent of \
    Nietzsche’s works, On the Genealogy of Morality deals with – and, \
    actually, confronts – the value system of the West, as a system that \
@@ -80,7 +80,7 @@ session.add(Item2)
 session.commit()
 
 Item3 = Item(
-   user_id=1, name="The Antichrist",
+   user_id=1, itemname="The Antichrist",
    description="“Christianity remains to this day the greatest misfortune \
    of humanity.” This sentence sums up the basic idea and the sarcastic \
    tone of The Antichrist, so if you’re pissed off by reading just that, \
@@ -97,7 +97,7 @@ session.add(Item3)
 session.commit()
 
 Item4 = Item(
-   user_id=1, name="The Birth of Tragedy",
+   user_id=1, itemname="The Birth of Tragedy",
    description="The first work Nietzsche published describes the tragic \
    feeling of life, as a typical philosophical aspect of modernity. \
    According to the German existentialist, this feeling is mainly expressed \
@@ -110,7 +110,7 @@ session.add(Item4)
 session.commit()
 
 Item5 = Item(
-   user_id=1, name="Ecce Homo",
+   user_id=1, itemname="Ecce Homo",
    description="Nietzsche autobiography was composed just weeks before \
    the writer collapsed into madness. Here were are given an examination \
    of the philosopher himself, as Nietzsche traces his life, work examines \
@@ -125,7 +125,7 @@ session.commit()
 
 # Item for Søren Kierkegaard
 catalog2 = Catalog(
-   user_id=1, name="Søren Kierkegaard",
+   user_id=1, catalogname="Søren Kierkegaard",
    description="Søren Aabye Kierkegaard (b. 1813, d. 1855) was a profound \
    and prolific writer in the Danish “golden age” of intellectual and \
    artistic activity. His work crosses the boundaries of philosophy, \
@@ -149,7 +149,7 @@ session.commit()
 
 
 Item1 = Item(
-   user_id=1, name="Fear and Trembling",
+   user_id=1, itemname="Fear and Trembling",
    description="In Fear and Trembling, Kierkegaard wanted to understand \
    the anxiety that must have been present in Abraham when God commanded him \
    to offer his son as a human sacrifice. Abraham had a choice to complete \
@@ -168,7 +168,7 @@ session.add(Item1)
 session.commit()
 
 Item2 = Item(
-   user_id=1, name="The Sickness Unto Death",
+   user_id=1, itemname="The Sickness Unto Death",
    description=" A famous duck dish from Beijing that \
    has been prepared since the imperial era. The meat \
    is prized for its thin, crisp skin, with authentic \
@@ -183,7 +183,7 @@ session.commit()
 
 # Item for Fyodor Dostoyevsky
 catalog3 = Catalog(
-   user_id=1, name="Fyodor Dostoyevsky",
+   user_id=1, catalogname="Fyodor Dostoyevsky",
    description='Fyodor Dostoyevsky, in full Fyodor Mikhaylovich Dostoyevsky, \
    Dostoyevsky also spelled Dostoevsky, (born November 11 \
    [October 30, Old Style], 1821, Moscow, Russia—died February 9 \
@@ -205,7 +205,7 @@ session.commit()
 
 
 Item1 = Item(
-   user_id=1, name="The Brothers Karamazov ",
+   user_id=1, itemname="The Brothers Karamazov ",
    description="The Brothers Karamazov is one of the passionate and best \
    fyodor dostoevsky books in order philosophical novel set in the 19th \
    century Russia. During the time, Russia was deeply in the ethical \
@@ -221,7 +221,7 @@ session.add(Item1)
 session.commit()
 
 Item2 = Item(
-   user_id=1, name="Crime and Punishment",
+   user_id=1, itemname="Crime and Punishment",
    description="Raskolnikov is a talented student and poverty strikes him \
    with devising the theory about the extraordinary men who are seen above \
    the law. With brilliance and innovation, he makes the new suggestion that \
@@ -234,7 +234,7 @@ session.add(Item2)
 session.commit()
 
 Item3 = Item(
-   user_id=1, name="The Idiot",
+   user_id=1, itemname="The Idiot",
    description="After returning to Russia from the sanitarium in \
    Switzerland, Christ-like epileptic Prince Myshkin also finds himself \
    most enmeshed in the tangle of love that has torn the two women. Nastasya \
@@ -250,7 +250,7 @@ session.add(Item3)
 session.commit()
 
 Item4 = Item(
-   user_id=1, name="Notes from Underground", description="This is a \
+   user_id=1, itemname="Notes from Underground", description="This is a \
    collection of powerful stories by great masters of Russian literature, \
    Fyodor Dostoyevsky. The author illustrates thoughts on political \
    philosophy, humanity, and religion. Notes from Underground, White Nights, \
@@ -268,7 +268,7 @@ session.commit()
 
 
 Item5 = Item(
-   user_id=1, name="Demons",
+   user_id=1, itemname="Demons",
    description='Demons by Fyodor Dostoevsky were inspired by the true story \
    of political murder in Russians in 1869. Fyodor Dostoevsky has conceived \
    of the demons as the "novel-pamphlet" and everything has been plagued \
@@ -283,7 +283,7 @@ session.add(Item5)
 session.commit()
 
 Item6 = Item(
-   user_id=1, name="The House of the Dead",
+   user_id=1, itemname="The House of the Dead",
    description="The House of the Dead is the fiction story that is based \
    on 4 years of life in a Siberian prison. An educated upper-class man was \
    condemned to live with the brutal guards and criminals with the arbitrary \
@@ -298,7 +298,7 @@ session.commit()
 
 # Item for Jean-Paul Sartre
 catalog4 = Catalog(
-   user_id=1, name="Jean-Paul Sartre",
+   user_id=1, catalogname="Jean-Paul Sartre",
    description='''Sartre (1905–1980) is arguably the best known philosopher \
    of the twentieth century. His indefatigable pursuit of philosophical \
    reflection, literary creativity and, in the second half of his life, \
@@ -331,7 +331,7 @@ session.commit()
 
 
 Item1 = Item(
-   user_id=1, name="Being and Nothingness",
+   user_id=1, itemname="Being and Nothingness",
    description='A philosophical classic and major cornerstone of modern \
    existentialism. Often criticized and all-too-rarely understood, \
    the philosophy of Jean-Paul Sartre encompasses the dilemmas and \
@@ -350,7 +350,7 @@ session.add(Item1)
 session.commit()
 
 Item2 = Item(
-   user_id=1, name="Nausea",
+   user_id=1, itemname="Nausea",
    description='''Nausea is the story of Antoine Roquentin, a French writer \
    who is horrified at his own existence. In impressionistic, diary form he \
    ruthlessly catalogues his every feeling and sensation about the world and \
@@ -373,7 +373,7 @@ session.commit()
 
 # Item for Immanuel Kant
 catalog5 = Catalog(
-   user_id=1, name="Immanuel Kant",
+   user_id=1, catalogname="Immanuel Kant",
    description='''Immanuel Kant (1724–1804) is the central figure in modern \
    philosophy. He synthesized early modern rationalism and empiricism, \
    set the terms for much of nineteenth and twentieth century philosophy, \
@@ -398,7 +398,7 @@ session.commit()
 
 
 Item1 = Item(
-   user_id=1, name="Critique of Pure Reason",
+   user_id=1, itemname="Critique of Pure Reason",
    description="The Critique of Pure Reason, published by Immanuel Kant in \
    1781, is one of the most complex structures and the most significant of \
    modern philosophy, bringing a revolution at least as great as that of \
@@ -420,7 +420,7 @@ session.add(Item1)
 session.commit()
 
 Item2 = Item(
-   user_id=1, name="Critique of Practical Reason",
+   user_id=1, itemname="Critique of Practical Reason",
    description="Critique of Practical Reason, written by legendary author \
    Immanuel Kant is widely considered to be one of the greatest classic and \
    historical texts of all time. This great classic will surely attract a \
@@ -438,7 +438,7 @@ session.add(Item2)
 session.commit()
 
 Item3 = Item(
-   user_id=1, name="Critique of Judgment",
+   user_id=1, itemname="Critique of Judgment",
    description="In THE CRITIQUE OF JUDGMENT (1790), Immanuel Kant \
    (1724-1804) seeks to establish the a priori principles underlying the \
    faculty of judgment, just as he did in his previous critiques of pure \
@@ -462,7 +462,7 @@ session.commit()
 
 # Item for Plato
 catalog6 = Catalog(
-   user_id=1, name="Plato",
+   user_id=1, catalogname="Plato",
    description='Plato (429?–347 B.C.E.) is, by any reckoning, one of the \
    most dazzling writers in the Western literary tradition and one of the \
    most penetrating, wide-ranging, and influential authors in the history of \
@@ -490,7 +490,7 @@ session.commit()
 
 
 Item1 = Item(
-   user_id=1, name="Apology",
+   user_id=1, itemname="Apology",
    description="The Apology is one of those rare works that gracefully \
    bridges the divide between philosophy and literature. The work is less \
    concerned with asserting any particular philosophical doctrines than it \
@@ -538,7 +538,7 @@ session.add(Item1)
 session.commit()
 
 Item2 = Item(
-   user_id=1, name="Republic",
+   user_id=1, itemname="Republic",
    description="Since the mid-nineteenth century, the Republic has been \
    Plato’s most famous and widely read dialogue.  As in most other Platonic \
    dialogues the main character is Socrates.  It is generally accepted that \

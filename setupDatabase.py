@@ -48,7 +48,7 @@ class Catalog(Base):
     __tablename__ = 'catalog'
 
     id = Column(Integer, primary_key=True)
-    name = Column(String(250), nullable=False)
+    catalogname = Column(String(250), nullable=False)
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
     description = Column(String(500))
@@ -57,20 +57,20 @@ class Catalog(Base):
     def serialize(self):
         """Return object data in easily serializeable format"""
         return {
-            'name': self.name,
+            'catalogname': self.catalogname,
             'id': self.id,
             'description': self.description,
         }
 
 
 class Item(Base):
-    __tablename__ = 'book_item'
+    __tablename__ = 'item'
 
-    name = Column(String(80), nullable=False)
+    itemname = Column(String(80), nullable=False)
     id = Column(Integer, primary_key=True)
     description = Column(String(500))
     year = Column(String(8))
-    catalog_id = Column(Integer, ForeignKey('catalog.id'))
+    catalogname = Column(String(80), ForeignKey('catalog.catalogname'))
     catalog = relationship(Catalog)
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
@@ -79,7 +79,7 @@ class Item(Base):
     def serialize(self):
         """Return object data in easily serializeable format"""
         return {
-            'name': self.name,
+            'itemname': self.itemname,
             'description': self.description,
             'id': self.id,
             'year': self.year,

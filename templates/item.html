@@ -8,12 +8,12 @@
 {% endfor %}
 {% endif %}
 {% endwith %}
-<div>{{catalog.name}}</div>
+<div>{{catalog.catalogname}}</div>
 <nav class="toc">
 	<ul>
 		{% for i in items %}
 		<li>
-			<a href='#{{i.name}}'>{{i.name}}</a>
+			<a href='#{{i.itemname}}'>{{i.itemname}}</a>
     	</li>
     	{% endfor %}
     </ul>
@@ -21,26 +21,26 @@
     	<path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round" transform="translate(-0.5, -0.5)" />
   </svg>
 </nav>
-<article class="content">
+--<article class="content">
 	{% for i in items %}
-	<div id = '{{i.name}}'><h2>{{i.name}}</h2></div>
+	<div id = '{{i.itemname}}'><h2>{{i.itemname}}</h2></div>
 	<div>{{i.description}}</div>
 	<div>Published in {{i.year}}</div>
 	{%if 'username' in session %} 
 	<div class = 'button'>
-		<a href="{{url_for('editItem',catalog_id=catalog_id,item_id=i.id)}}" >Edit</a>
-		<a href="{{url_for('deleteItem',catalog_id=catalog_id,item_id=i.id)}}" >Delete</a>
+		<a href="{{url_for('editItem',catalogname = catalog.catalogname,itemname = i.itemname)}}" >Edit</a>
+		<a href="{{url_for('deleteItem',catalogname = catalog.catalogname,itemname = i.itemname)}}" >Delete</a>
 	</div>
 	{% endif %}
 	{% endfor %}
 {%if 'username'  in session %}
 <div class='footer'>
 <div class= 'button'>
-	<a href = '{{url_for('newItem',catalog_id = catalog_id)}}'>Create New Item</a>
+	<a href = '{{url_for('newItem',catalogname = catalogname)}}'>Create New Item</a>
 </div>
 <div class = 'button'>
-	<a href="{{url_for('deleteCatalog',catalog_id=catalog_id)}}" >Edit {{ catalog.name }}</a>
-	<a href="{{url_for('deleteCatalog',catalog_id=catalog_id)}}" >Delete {{ catalog.name }}</a>
+	<a href="{{url_for('editCatalog',catalogname = catalog.catalogname)}}" >Edit {{ catalog.catalogname }}</a>
+	<a href="{{url_for('deleteCatalog',catalogname = catalog.catalogname)}}" >Delete {{ catalog.catalogname }}</a>
 </div>
 {% endif %}
 </div>

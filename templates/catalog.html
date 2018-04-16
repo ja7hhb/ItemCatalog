@@ -8,12 +8,12 @@
 {% endfor %}
 {% endif %}
 {% endwith %}
-<div>{{catalog.name}}</div>
+<div>{{catalog.catalogname}}</div>
 <nav class="toc">
 	<ul>
 		{% for i in catalog %}
 		<li>
-			<a href='#{{i.name}}'>{{i.name}}</a>
+			<a href='#{{i.name}}'>{{i.catalogname}}</a>
 		</li>
 		{% endfor %}
 	</ul>
@@ -23,7 +23,7 @@
 </nav>
 <article class="content">
 	{% for i in catalog %}
-<div id = '{{i.name}}'><a href ="{{url_for('showItem',catalog_id=i.id)}}"><h2>{{i.name}}</h2></a></div>
+<div id = '{{i.catalogname}}'><a href ="{{url_for('showItem',catalogname=i.catalogname)}}"><h2>{{i.catalogname}}</h2></a></div>
 <div>{{i.description}}</div>
 {% endfor %}
 {%if 'username' in session %}
