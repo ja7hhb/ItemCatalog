@@ -14,16 +14,15 @@ python3
 flask
 
 ## step
-clone this repo:`git clone https://github.com/ja7hhb/ItemCatalog.git`
+clone this repo: `git clone https://github.com/ja7hhb/ItemCatalog.git`
 
-cd ItemCatalog
+move ItemCatalog directory: `cd ItemCatalog`
 
-create virtual environment:`vagrant up`&`vagrant ssh`
+create virtual environment: `vagrant up`&`vagrant ssh`
 
-`cd /vagrant`
+move vagrant directory: `cd /vagrant`
 
-run catalogApp.py
-`python3 catalogApp.py`
+run catalogApp.py: `python3 catalogApp.py`
 
 ## JSON Endpoints
 The following are open to the public:
