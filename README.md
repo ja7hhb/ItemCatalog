@@ -8,9 +8,12 @@ This is RESTful web application about philosophy catalog item using Flask which 
 
 ## requirements
 
-Vagrant 
+Vagrant
+
 Virtual Box
+
 python3
+
 flask
 
 ## step
@@ -23,6 +26,8 @@ create virtual environment: `vagrant up`&`vagrant ssh`
 move vagrant directory: `cd /vagrant`
 
 run catalogApp.py: `python3 catalogApp.py`
+
+Go to http://localhost:5000/ in your browser: `http://localhost:5000/`
 
 ## JSON Endpoints
 The following are open to the public:
