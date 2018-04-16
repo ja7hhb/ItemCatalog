@@ -8,6 +8,7 @@ This is RESTful web application about philosophy catalog item using Flask which 
 
 ## Usage 
 requirements
+
 Vagrant 
 Virtual Box
 python3
