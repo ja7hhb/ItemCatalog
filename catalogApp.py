@@ -203,7 +203,8 @@ def catalogJSON():
 @app.route('/catalog/<string:catalogname>/item/JSON')
 def catalogItemJSON(catalogname):
     catalog = session.query(Catalog).filter_by(catalogname=catalogname).one()
-    items = session.query(Item).filter_by(catalogname=catalog.catalogname).all()
+    items = session.query(Item).filter_by(
+        catalogname=catalog.catalogname).all()
     return jsonify(Item=[i.serialize for i in items])
 
 
@@ -289,12 +290,14 @@ def newItem(catalogname):
         return redirect('/login')
     if request.method == 'POST':
         newItems = Item(
-            itemname=request.form['name'], description=request.form['description'],
+            itemname=request.form['name'],
+            description=request.form['description'],
             year=request.form['year'], catalogname=catalogname)
         session.add(newItems)
         session.commit()
         flash("New item created!")
-        return redirect(url_for('showItem', catalogname=catalogname, item=items))
+        return redirect(url_for(
+            'showItem', catalogname=catalogname, item=items))
     else:
         return render_template(
             'newItem.html', catalogname=catalogname, item=items)
