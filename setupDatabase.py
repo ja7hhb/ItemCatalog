@@ -54,6 +54,7 @@ class Catalog(Base):
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
     description = Column(String(500))
+    item = relationship('Item', cascade='all, delete-orphan')
 
     @property
     def serialize(self):
