@@ -244,6 +244,11 @@ def editCatalog(catalogname):
     if 'username' not in login_session:
         return redirect('/login')
     catalog = session.query(Catalog).filter_by(catalogname=catalogname).one()
+    if catalog.user_id != login_session['user_id']:
+        response = make_response(
+            json.dumps("Can't edit this because you're not this catalog owner"), 401)
+        response.headers['Content-Type'] = 'application/json'
+        return response
     if request.method == 'POST':
         if request.form['name']:
             catalog.catalogname = request.form['name']
@@ -262,6 +267,11 @@ def deleteCatalog(catalogname):
     if 'username' not in login_session:
         return redirect('/login')
     catalog = session.query(Catalog).filter_by(catalogname=catalogname).one()
+    if catalog.user_id != login_session['user_id']:
+        response = make_response(
+            json.dumps("Can't delete this because you're not this catalog owner"), 401)
+        response.headers['Content-Type'] = 'application/json'
+        return response
     if request.method == 'POST':
         session.delete(catalog)
         session.commit()
@@ -276,9 +286,9 @@ def deleteCatalog(catalogname):
 @app.route('/catalog/<string:catalogname>/item/')
 def showItem(catalogname):
     catalog = session.query(Catalog).filter_by(catalogname=catalogname).one()
-    items = session.query(Item).filter_by(catalogname=catalog.catalogname)
+    item = session.query(Item).filter_by(catalogname=catalog.catalogname)
     return render_template(
-        'item.html', items=items, catalog=catalog, catalogname=catalogname)
+        'item.html', item=item, catalog=catalog, catalogname=catalogname)
 
 
 # Create new item
@@ -286,7 +296,7 @@ def showItem(catalogname):
 def newItem(catalogname):
     if 'username' not in login_session:
         return redirect('/login')
-    items = session.query(Item).all()
+    item = session.query(Item).all()
     if request.method == 'POST':
         newItems = Item(
             itemname=request.form['name'],
@@ -296,10 +306,10 @@ def newItem(catalogname):
         session.commit()
         flash("New item created!")
         return redirect(url_for(
-            'showItem', catalogname=catalogname, item=items))
+            'showItem', catalogname=catalogname, item=item))
     else:
         return render_template(
-            'newItem.html', catalogname=catalogname, item=items)
+            'newItem.html', catalogname=catalogname, item=item)
 
 
 # Edit item
@@ -308,21 +318,26 @@ def newItem(catalogname):
 def editItem(catalogname, itemname):
     if 'username' not in login_session:
         return redirect('/login')
-    itemEdit = session.query(Item).filter_by(itemname=itemname).one()
+    item = session.query(Item).filter_by(itemname=itemname).one()
+    if item.user_id != login_session['user_id']:
+        response = make_response(
+            json.dumps("Can't edit this because you're not this item owner"), 401)
+        response.headers['Content-Type'] = 'application/json'
+        return response
     if request.method == 'POST':
         if request.form['name']:
-            itemEdit.name = request.form['name']
+            item.name = request.form['name']
         if request.form['description']:
-            itemEdit.description = request.form['description']
+            item.description = request.form['description']
         if request.form['year']:
-            itemEdit.year = request.form['year']
-        session.add(itemEdit)
+            item.year = request.form['year']
+        session.add(item)
         session.commit()
         flash("Item has been edited")
         return redirect(url_for('showItem', catalogname=catalogname))
     else:
         return render_template('editItem.html', catalogname=catalogname,
-                               itemname=itemname, item=itemEdit)
+                               itemname=itemname, item=item)
 
 
 # Delete item
@@ -331,15 +346,20 @@ def editItem(catalogname, itemname):
 def deleteItem(catalogname, itemname):
     if 'username' not in login_session:
         return redirect('/login')
-    itemDelete = session.query(Item).filter_by(itemname=itemname).one()
+    item = session.query(Item).filter_by(itemname=itemname).one()
+    if item.user_id != login_session['user_id']:
+        response = make_response(
+            json.dumps("Can't delete this because you're not this catalog owner"), 401)
+        response.headers['Content-Type'] = 'application/json'
+        return response
     if request.method == 'POST':
-        session.delete(itemDelete)
+        session.delete(item)
         session.commit()
         flash("Item has been deleted")
         return redirect(url_for('showItem', catalogname=catalogname))
     else:
         return render_template('deleteItem.html', catalogname=catalogname,
-                               itemname=itemname, item=itemDelete)
+                               itemname=itemname, item=item)
 
 
 if __name__ == '__main__':

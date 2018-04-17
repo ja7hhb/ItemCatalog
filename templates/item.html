@@ -11,7 +11,7 @@
 <div><h1>{{catalog.catalogname}}</h1></div>
 <nav class="toc">
 	<ul>
-		{% for i in items %}
+		{% for i in item %}
 		<li>
 			<a href='#{{i.itemname}}'>{{i.itemname}}</a>
     	</li>
@@ -22,7 +22,7 @@
   </svg>
 </nav>
 <article class="content">
-	{% for i in items %}
+	{% for i in item %}
 	<div id = '{{i.itemname}}'><h2>{{i.itemname}}</h2></div>
 	<div>{{i.description}}</div>
 	<div>Published in {{i.year}}</div>
