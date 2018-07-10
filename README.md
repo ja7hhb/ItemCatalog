@@ -5,6 +5,11 @@ This is a project for <a href="https://www.udacity.com/course/full-stack-web-dev
 
 This is RESTful web application about philosophy catalog item using Flask which accesss a SQL database.  To create authentication system, this project has OAuth2 with Google API.
 
+<img src="https://github.com/ja7hhb/a/blob/image2/Screen%20Shot%202018-07-10%20at%204.49.43%20PM.png" alt="Smiley face" height="100%" width="100%">
+
+If user login, receive grant to change web content.
+
+<img src="https://github.com/ja7hhb/a/blob/imagw3/Screen%20Shot%202018-07-10%20at%204.56.20%20PM.png" height="100%" width="100%">
 
 ## requirements
 
