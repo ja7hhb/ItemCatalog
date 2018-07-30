@@ -3,11 +3,11 @@ URL: https://catalogitem00.herokuapp.com/
 
 This is a project for <a href="https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd004"> Udacity Full Stack Web Developer Nanodegree</a>.
 
-This is RESTful web application about philosophy catalog item using Flask which accesss a SQL database.  To create authentication system, this project has OAuth2 with Google API.
+This is a RESTful web application about philosophy using Flask which can access an SQL database and Implements OAuth using Google Sign-In.
 
 <img src="https://github.com/ja7hhb/ItemCatalog/blob/image/static/img/Screen%20Shot%202018-07-10%20at%204.49.43%20PM.png" alt="Smiley face" height="100%" width="100%">
 
-If user login, receive grant to change web content.
+Passed permission to change web content when a user logs in, so a user can customize own.
 
 <img src="https://github.com/ja7hhb/ItemCatalog/blob/image/static/img/Screen%20Shot%202018-07-10%20at%204.56.20%20PM.png" height="100%" width="100%">
 
@@ -17,20 +17,20 @@ Vagrant
 
 Virtual Box
 
-python3
+Python3
 
-flask
+Flask
 
 ## step
-clone this repo: `git clone https://github.com/ja7hhb/ItemCatalog.git`
+Clone this repo: `git clone https://github.com/ja7hhb/ItemCatalog.git`
 
-move ItemCatalog directory: `cd ItemCatalog`
+Move ItemCatalog directory: `cd ItemCatalog`
 
-create virtual environment: `vagrant up`&`vagrant ssh`
+Create virtual environment: `vagrant up`&`vagrant ssh`
 
-move vagrant directory: `cd /vagrant`
+Move vagrant directory: `cd /vagrant`
 
-run catalogApp.py: `python3 catalogApp.py`
+Run catalogApp.py: `python3 catalogApp.py`
 
 Go to http://localhost:5000/ in your browser: `http://localhost:5000/`
 
