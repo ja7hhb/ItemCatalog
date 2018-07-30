@@ -11,7 +11,7 @@ Passed permission to change web content when a user logs in, so a user can custo
 
 <img src="https://github.com/ja7hhb/ItemCatalog/blob/image/static/img/Screen%20Shot%202018-07-10%20at%204.56.20%20PM.png" height="100%" width="100%">
 
-## requirements
+## Requirements
 
 Vagrant
 
@@ -21,7 +21,7 @@ Python3
 
 Flask
 
-## step
+## Step
 Clone this repo: `git clone https://github.com/ja7hhb/ItemCatalog.git`
 
 Move ItemCatalog directory: `cd ItemCatalog`
