@@ -1,8 +1,6 @@
 # Item Catalog Web App
 URL: https://catalogitem00.herokuapp.com/
 
-This is a project for <a href="https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd004"> Udacity Full Stack Web Developer Nanodegree</a>.
-
 This is a RESTful web application about philosophy using Flask which can access an SQL database and Implements OAuth using Google Sign-In.
 
 <img src="https://github.com/ja7hhb/ItemCatalog/blob/image/static/img/Screen%20Shot%202018-07-10%20at%204.49.43%20PM.png" alt="Smiley face" height="100%" width="100%">
